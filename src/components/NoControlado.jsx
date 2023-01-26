@@ -6,7 +6,10 @@ const NoControlado = () => {
 
   const handlerSubmit = (e) => {
     e.preventDefault();
-    console.log(form.current);
+    const data=new FormData(form.current);
+    //console.log(...data.entries())
+    const {title,descripcion,state}=Object.fromEntries([...data.entries()]);
+    console.log(title)
   };
   return (
     <form onSubmit={handlerSubmit} ref={form} >
