@@ -1,10 +1,15 @@
+import { useRef } from "react";
+
 const NoControlado = () => {
+
+  const form= useRef(null)
+
   const handlerSubmit = (e) => {
     e.preventDefault();
-    console.log("de");
+    console.log(form.current);
   };
   return (
-    <form onSubmit={handlerSubmit}>
+    <form onSubmit={handlerSubmit} ref={form} >
       <input
         type="text"
         placeholder="Ingrese todo"
