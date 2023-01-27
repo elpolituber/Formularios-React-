@@ -1,18 +1,18 @@
-import { useRef } from "react";
+import { useRef,useState } from "react";
 
 const NoControlado = () => {
 
   const form= useRef(null)
-
+  const [error,setError]=useState("")
   const handlerSubmit = (e) => {
     e.preventDefault();
     //capturar los datos
     const data=new FormData(form.current);
     const {title,descripcion,state}=Object.fromEntries([...data.entries()]);
     //validar datos
-    if(!title.trim())return console.log('llena')
-    if(!descripcion.trim())return console.log('llena')
-    if(!state.trim())return console.log('llena')
+    if(!title.trim())return setError('llena titulo')
+    if(!descripcion.trim())return setError('llena descripcion')
+    if(!state.trim())return setError('llena estado')
     //enviar los datos
     console.log(title,descripcion,state);
     
@@ -38,6 +38,7 @@ const NoControlado = () => {
       <button className="btn btn-primary" type="submit">
         Agregar
       </button>
+      {error!=='' && error}
     </form>
   );
 };
