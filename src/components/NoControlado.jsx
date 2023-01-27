@@ -6,10 +6,16 @@ const NoControlado = () => {
 
   const handlerSubmit = (e) => {
     e.preventDefault();
+    //capturar los datos
     const data=new FormData(form.current);
-    //console.log(...data.entries())
     const {title,descripcion,state}=Object.fromEntries([...data.entries()]);
-    console.log(title)
+    //validar datos
+    if(!title.trim())return console.log('llena')
+    if(!descripcion.trim())return console.log('llena')
+    if(!state.trim())return console.log('llena')
+    //enviar los datos
+    console.log(title,descripcion,state);
+    
   };
   return (
     <form onSubmit={handlerSubmit} ref={form} >
