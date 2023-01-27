@@ -1,10 +1,11 @@
 import { useState } from "react";
 
 const Controlado = () => {
-  const [title,setTitle]=useState('prueba');
-  const [descripcion,setDescripcion]=useState('esto es prueba');
-  const [state,setState]=useState('pendiente');
-  
+  const[todo,setTodo]=useState({
+    title:'Todo',
+    descripcion:'Descripcion 1',
+    state:'pendiente'
+  })
   const handlerSubmit = (e) => {
     e.preventDefault();
   };
@@ -15,18 +16,18 @@ const Controlado = () => {
         placeholder="Ingrese todo"
         className="form-control mb-2"
         name="title"
-        value={title}
-        onChange={e=>setTitle(e.target.value)}
+        value={todo.title}
+        onChange={e=>setTodo({...todo,title:e.target.value})}
       />
       <textarea
         className="form-control mb-2"
         type="text"
         placeholder="Ingrese descripcion"
         name="descripcion"
-        value={descripcion}
-        onChange={e=>setDescripcion(e.target.value)}
+        value={todo.descripcion}
+        onChange={e=>setTodo({...todo,descripcion:e.target.value})}
       />
-      <select className="form-select" name="state" value={state} onChange={e=>setState(e.target.value)}>
+      <select className="form-select" name="state" value={todo.state} onChange={e=>setTodo({...todo,state:e.target.value})}>
         <option value="pendiente">Pendiente</option>
         <option value="completado">Completado</option>
       </select>
