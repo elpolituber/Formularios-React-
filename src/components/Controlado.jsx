@@ -4,7 +4,8 @@ const Controlado = () => {
   const[todo,setTodo]=useState({
     title:'Todo',
     descripcion:'Descripcion 1',
-    state:'pendiente'
+    state:'pendiente',
+    priority:false
   })
   const handlerSubmit = (e) => {
     e.preventDefault();
@@ -33,7 +34,17 @@ const Controlado = () => {
         value={todo.descripcion}
         onChange={handlerChange}
       />
-      <select className="form-select" name="state" value={todo.state} onChange={handlerChange}>
+      <div className="form-check mb-2">
+      <input type="checkbox" 
+        name="priority" 
+        className="form-check-input" 
+        id="input"
+        checked={todo.priority}
+        onChange={e=>setTodo({...todo, priority:e.target.checked})}
+      />
+      <label htmlFor="input">Dar prioridad</label>
+      </div>
+      <select className="form-select mb-2" name="state" value={todo.state} onChange={handlerChange}>
         <option value="pendiente">Pendiente</option>
         <option value="completado">Completado</option>
       </select>
