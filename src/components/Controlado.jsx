@@ -7,17 +7,16 @@ const Controlado = () => {
     state:'pendiente',
     priority:false
   })
+  const{title,descripcion,state,priority}=todo
   const handlerSubmit = (e) => {
     e.preventDefault();
+    console.log(title,descripcion,state,priority)
   };
 
   const handlerChange=e=>{
-  //  setTodo({...todo, priority:e.target.checked})
+    const {name,type,checked,value} = e.target;
     setTodo({...todo,
-      [e.target.name]:
-      e.target.type === "checkbox" 
-      ?e.target.checked
-      :e.target.name
+      [name]:type === "checkbox" ? checked : value
     })
   }
   return (
@@ -27,7 +26,7 @@ const Controlado = () => {
         placeholder="Ingrese todo"
         className="form-control mb-2"
         name="title"
-        value={todo.title}
+        value={title}
         onChange={handlerChange}
       />
       <textarea
@@ -35,7 +34,7 @@ const Controlado = () => {
         type="text"
         placeholder="Ingrese descripcion"
         name="descripcion"
-        value={todo.descripcion}
+        value={descripcion}
         onChange={handlerChange}
       />
       <div className="form-check mb-2">
@@ -43,12 +42,12 @@ const Controlado = () => {
         name="priority" 
         className="form-check-input" 
         id="input"
-        checked={todo.priority}
+        checked={priority}
         onChange={handlerChange}
       />
       <label htmlFor="input">Dar prioridad</label>
       </div>
-      <select className="form-select mb-2" name="state" value={todo.state} onChange={handlerChange}>
+      <select className="form-select mb-2" name="state" value={state} onChange={handlerChange}>
         <option value="pendiente">Pendiente</option>
         <option value="completado">Completado</option>
       </select>
