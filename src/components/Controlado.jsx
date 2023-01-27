@@ -9,6 +9,12 @@ const Controlado = () => {
   const handlerSubmit = (e) => {
     e.preventDefault();
   };
+
+  const handlerChange=e=>{
+    setTodo({...todo,
+      [e.target.name]:e.target.name
+    })
+  }
   return (
     <form onSubmit={handlerSubmit} >
       <input
@@ -17,7 +23,7 @@ const Controlado = () => {
         className="form-control mb-2"
         name="title"
         value={todo.title}
-        onChange={e=>setTodo({...todo,title:e.target.value})}
+        onChange={handlerChange}
       />
       <textarea
         className="form-control mb-2"
@@ -25,13 +31,13 @@ const Controlado = () => {
         placeholder="Ingrese descripcion"
         name="descripcion"
         value={todo.descripcion}
-        onChange={e=>setTodo({...todo,descripcion:e.target.value})}
+        onChange={handlerChange}
       />
-      <select className="form-select" name="state" value={todo.state} onChange={e=>setTodo({...todo,state:e.target.value})}>
+      <select className="form-select" name="state" value={todo.state} onChange={handlerChange}>
         <option value="pendiente">Pendiente</option>
         <option value="completado">Completado</option>
       </select>
-      <button className="btn btn-primary" type="submit">
+      <button className="btn btn-primary mb-2" type="submit">
         Agregar
       </button>
     </form>

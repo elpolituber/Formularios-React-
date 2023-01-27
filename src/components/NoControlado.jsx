@@ -36,7 +36,7 @@ const NoControlado = () => {
         <option value="pendiente">Pendiente</option>
         <option value="completado">Completado</option>
       </select>
-      <button className="btn btn-primary" type="submit">
+      <button className="btn btn-primary mb-2" type="submit">
         Agregar
       </button>
       {error!=='' && error}
