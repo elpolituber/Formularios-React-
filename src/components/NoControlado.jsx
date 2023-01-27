@@ -1,11 +1,12 @@
 import { useRef,useState } from "react";
 
 const NoControlado = () => {
-
+  
   const form= useRef(null)
   const [error,setError]=useState("")
   const handlerSubmit = (e) => {
     e.preventDefault();
+    setError('')
     //capturar los datos
     const data=new FormData(form.current);
     const {title,descripcion,state}=Object.fromEntries([...data.entries()]);
