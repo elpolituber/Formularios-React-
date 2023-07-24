@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Formulario from "./components/Formulario";
 import Todos from "./components/Todos";
 
-const initialStatesTodos=[]
+const initialStatesTodos=JSON.parse(localStorage.getItem('todos')) || []; 
 
 const App=()=>{  
   
